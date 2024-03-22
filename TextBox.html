@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Text Box</title>
+	<link rel="stylesheet" type="text/css" href="TextBox.css">
+</head>
+<body>
+	<h1 align="center" class="heading">Text Box</h1>
+	<div class="container" align="center">
+		<form class="textboxform">
+			<label>Enter your text below</label>
+			<br><br>
+			<textarea id="text" rows="10" cols="70" onkeyup="updateInfo()" autofocus></textarea><br><br>
+			<button type="button" onclick="transformToUpperCase()">Uppercase</button>
+			<button type="button" onclick="transformToLowerCase()">lowercase</button>
+			<button type="button" onclick="findText()">Find</button>
+			<button type="button" onclick="changeColor()">Change color</button>
+			<button type="button" onclick="textUnderline()">text underLine</button>
+
+			<h2 id="textinfo">this text contains 0 words and 0 characters</h2>
+		</form>
+	</div>
+    <script type="text/javascript">
+    	let text=document.getElementById("text");
+    	let textInfo=document.getElementById(`textinfo`);
+    	let clr;
+    	function updateInfo() {
+    		let numberOfWords=text.value.trim().split(" ").length
+    		textInfo.innerHTML=`this text contains ${numberOfWords} words and ${text.value.length} characters`
+    	}
+    	function transformToUpperCase(){
+    		text.value=text.value.toUpperCase();
+    	}
+    	function transformToLowerCase(){
+    		text.value=text.value.toLowerCase();
+    	}
+    	function findText(){
+    		let searchText= prompt("enter the text: ");
+    		if(text.value.includes(searchText)){
+    			alert(`Search text "${searchText}" is  present `)
+    		}else{
+    			alert(`Search text "${searchText}" is not present `)
+    		}
+    	}
+    	function changeColor(){
+    		clr=prompt(("enter your fav color: ").toLowerCase())
+    		text.style.color=clr;
+    	}
+    	function textUnderline(){
+    		text.style.textDecoration=`underline 2px solid ${clr}`
+    	}
+    </script>
+</body>
+</html>
